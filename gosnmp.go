@@ -234,6 +234,8 @@ func (x *GoSNMP) GetNext(oid string) (*SnmpPacket, error) {
 		}
 	}()
 
+	_ = err // Workaround for the unused variable problem
+
 	// Create the packet
 	packet := new(SnmpPacket)
 
@@ -267,6 +269,8 @@ func (x *GoSNMP) GetBulk(nonRepeaters, maxRepetitions uint8, oids ...string) (*S
 		}
 	}()
 
+	_ = err // Workaround for the unused variable problem
+
 	// Create the packet
 	packet := new(SnmpPacket)
 
@@ -294,6 +298,8 @@ func (x *GoSNMP) Get(oid string) (*SnmpPacket, error) {
 		}
 	}()
 
+	_ = err // Workaround for the unused variable problem
+
 	// Create the packet
 	packet := new(SnmpPacket)
 
@@ -316,6 +322,8 @@ func (x *GoSNMP) GetMulti(oids []string) (*SnmpPacket, error) {
 			err = fmt.Errorf("%v", e)
 		}
 	}()
+
+	_ = err // Workaround for the unused variable problem
 
 	// Create the packet
 	packet := new(SnmpPacket)
