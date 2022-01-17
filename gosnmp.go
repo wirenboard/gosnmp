@@ -226,15 +226,14 @@ func (x *GoSNMP) sendPacket(packet *SnmpPacket) (*SnmpPacket, error) {
 
 // GetNext sends an SNMP Get Next Request to the target. Returns the next
 // variable response from the OID given or an error
-func (x *GoSNMP) GetNext(oid string) (*SnmpPacket, error) {
-	var err error
+func (x *GoSNMP) GetNext(oid string) (*SnmpPacket, err error) {
+
 	defer func() {
 		if e := recover(); e != nil {
 			err = fmt.Errorf("%v", e)
 		}
 	}()
 
-	_ = err // Workaround for the unused variable problem
 
 	// Create the packet
 	packet := new(SnmpPacket)
@@ -261,15 +260,13 @@ func (x *GoSNMP) Debug(data []byte) (*SnmpPacket, error) {
 
 // GetBulk sends an SNMP BULK-GET request to the target. Returns a Variable with
 // the response or an error
-func (x *GoSNMP) GetBulk(nonRepeaters, maxRepetitions uint8, oids ...string) (*SnmpPacket, error) {
-	var err error
+func (x *GoSNMP) GetBulk(nonRepeaters, maxRepetitions uint8, oids ...string) (*SnmpPacket, err error) {
+
 	defer func() {
 		if e := recover(); e != nil {
 			err = fmt.Errorf("%v", e)
 		}
 	}()
-
-	_ = err // Workaround for the unused variable problem
 
 	// Create the packet
 	packet := new(SnmpPacket)
@@ -290,15 +287,13 @@ func (x *GoSNMP) GetBulk(nonRepeaters, maxRepetitions uint8, oids ...string) (*S
 
 // Get sends an SNMP GET request to the target. Returns a Variable with the
 // response or an error
-func (x *GoSNMP) Get(oid string) (*SnmpPacket, error) {
-	var err error
+func (x *GoSNMP) Get(oid string) (*SnmpPacket, err error) {
+
 	defer func() {
 		if e := recover(); e != nil {
 			err = fmt.Errorf("%v", e)
 		}
 	}()
-
-	_ = err // Workaround for the unused variable problem
 
 	// Create the packet
 	packet := new(SnmpPacket)
@@ -315,15 +310,13 @@ func (x *GoSNMP) Get(oid string) (*SnmpPacket, error) {
 
 // GetMulti sends an SNMP GET request to the target. Returns a Variable with the
 // response or an error
-func (x *GoSNMP) GetMulti(oids []string) (*SnmpPacket, error) {
-	var err error
+func (x *GoSNMP) GetMulti(oids []string) (*SnmpPacket, err error) {
+
 	defer func() {
 		if e := recover(); e != nil {
 			err = fmt.Errorf("%v", e)
 		}
 	}()
-
-	_ = err // Workaround for the unused variable problem
 
 	// Create the packet
 	packet := new(SnmpPacket)
