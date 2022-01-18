@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-func marshalObjectIdentifier(oid []int) (ret []byte, err error) {
+func marshalObjectIdentifier(oid []uint32) (ret []byte, err error) {
 	out := bytes.NewBuffer(make([]byte, 0, 128))
 	if len(oid) < 2 || oid[0] > 6 || oid[1] >= 40 {
 		return nil, errors.New("invalid object identifier")

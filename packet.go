@@ -383,18 +383,20 @@ func oidToString(oid []int) (ret string) {
 
 func marshalOID(oid string) ([]byte, error) {
 	var err error
-
+	var oidUl uint64
+    
 	// Encode the oid
 	oid = strings.Trim(oid, ".")
 	oidParts := strings.Split(oid, ".")
-	oidBytes := make([]int, len(oidParts))
+	oidBytes := make([]uint32, len(oidParts))
 
 	// Convert the string OID to an array of integers
 	for i := 0; i < len(oidParts); i++ {
-		oidBytes[i], err = strconv.Atoi(oidParts[i])
+		oidUl, err = strconv.ParseUint(oidParts[i],10,32)
 		if err != nil {
 			return nil, fmt.Errorf("Unable to parse OID: %s\n", err.Error())
 		}
+		oidBytes[i] = uint32(oidUl)
 	}
 
 	mOid, err := marshalObjectIdentifier(oidBytes)
