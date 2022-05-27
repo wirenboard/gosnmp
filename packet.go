@@ -119,7 +119,7 @@ func Unmarshal(packet []byte) (*SnmpPacket, error) {
 			}
 
 			cursor += rawRequestId.DataLength + rawRequestId.HeaderLength
-			if requestid, ok := rawRequestId.BERVariable.Value.(int); ok {
+			if requestid, ok := rawRequestId.BERVariable.Value.(uint32); ok {
 				response.RequestID = uint32(requestid)
 				log.Debug("Parsed Request ID: %d\n", requestid)
 			}
