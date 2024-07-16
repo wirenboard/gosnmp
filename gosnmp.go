@@ -184,7 +184,7 @@ func (x *GoSNMP) sendPacket(packet *SnmpPacket) (*SnmpPacket, error) {
 	x.conn.SetDeadline(deadline.Add(x.Timeout))
 
 	// Create random Request-ID
-	packet.RequestID = rand.Uint32()
+	packet.RequestID = uint32(rand.Int31())
 
 	// Marshal it
 	fBuf, err := packet.marshal()
@@ -219,7 +219,7 @@ func (x *GoSNMP) sendPacket(packet *SnmpPacket) (*SnmpPacket, error) {
 
 	// check Request-ID
 	if pdu.RequestID != packet.RequestID {
-		return nil, fmt.Errorf("Request ID mismatch")
+		return nil, fmt.Errorf("Request ID mismatch: %d != %d", pdu.RequestID, packet.RequestID)
 	}
 
 	return pdu, nil
